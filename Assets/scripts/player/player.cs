@@ -14,30 +14,30 @@ public class player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        ani = GetComponent<Animator>();
-        sp = GetComponent<SpriteRenderer>();
+        /*ani = GetComponent<Animator>();
+        sp = GetComponent<SpriteRenderer>();*/
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (move != Vector2.zero)
+        /*if (move != Vector2.zero)
         {
             ani.SetBool("is_run", true);
         }
         else
         {
             ani.SetBool("is_run", false);
-        }
+        }*/
 
-        if (move.x > 0)
+        /*if (move.x > 0)
         {
             sp.flipX = false;
         }
         else if (move.x < 0)
         {
             sp.flipX = true;
-        }
+        }*/
     }
 
     void FixedUpdate()
