@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 3
   tags:
   - quai
+  - items
+  - items_boss
+  - boss_coin
+  - items_health
   layers:
   - Default
   - TransparentFX
