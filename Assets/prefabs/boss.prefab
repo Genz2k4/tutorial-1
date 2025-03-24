@@ -212,7 +212,7 @@ MonoBehaviour:
   bullet_count: 0
   min: 0
   max: 0
-  bullet_prefab: {fileID: 0}
+  bullet_prefab: {fileID: 2387064588681008793, guid: 300ffa5190b742f4580fb5ccf93755a5, type: 3}
 --- !u!1001 &4973661593896595979
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -87,6 +87,7 @@ public abstract class enemy: MonoBehaviour
     
     protected void update_health()
     {
+        current_health = Mathf.Max(0, current_health);
         health_bar.fillAmount = current_health / max_health;
     }
 
