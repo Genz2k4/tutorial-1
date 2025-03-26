@@ -199,10 +199,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1da6d1b906a4304a801d17fd185af9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  damage: 0
-  stay_damage: 0
-  max_health: 0
+  speed: 1
+  damage: 1
+  stay_damage: 1
+  max_health: 2
   current_health: 0
   die_prefabs: {fileID: 4467964055298628451, guid: 8efaf507d78b14d448a6ebd820a9a1f5, type: 3}
   coin_prefabs: {fileID: 5178049995026770482, guid: 0e81101a1ccab724492c834dd3371d7c, type: 3}
