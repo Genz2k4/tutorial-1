@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1946166644702602614}
   - component: {fileID: 3439030863631985088}
   - component: {fileID: -3423892507817755533}
-  - component: {fileID: 903522993813863506}
+  - component: {fileID: 7211448550332877242}
   m_Layer: 0
   m_Name: bulet_pl
   m_TagString: Untagged
@@ -163,7 +163,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &903522993813863506
+--- !u!114 &7211448550332877242
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,8 +172,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8720348416612580904}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9218466b26d2bc4287b3d73c54748b9, type: 3}
+  m_Script: {fileID: 11500000, guid: 508be1e7618a022458186195d9c4714b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  damage: 2
+  damage: 5

@@ -16,6 +16,7 @@ public class player : MonoBehaviour
     [SerializeField] Image health_bar;
     [SerializeField] TextMeshProUGUI score_text;
     [SerializeField] GameObject die_prefabs;
+    [SerializeField] gamemanager gamemanager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -78,6 +79,8 @@ public class player : MonoBehaviour
         
         var die_pre = Instantiate(die_prefabs, transform.position, Quaternion.identity);
         Destroy(die_pre, 0.5f);
+        
+        gamemanager.game_over();
     }
 
     void update_health()
