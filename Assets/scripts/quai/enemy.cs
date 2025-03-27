@@ -8,10 +8,12 @@ public abstract class enemy: MonoBehaviour
     [SerializeField] protected GameObject die_prefabs, coin_prefabs;
     [SerializeField] protected Image health_bar;
     [SerializeField] protected GameObject[] coins;
+    [SerializeField] protected audio_manager audio_manager;
     
     protected player player;
     protected Animator ani;
     protected bool is_damage = false;
+    protected Coroutine coroutine;
 
     protected virtual void Start()
     {
@@ -19,6 +21,8 @@ public abstract class enemy: MonoBehaviour
         ani = GetComponent<Animator>();
 
         current_health = max_health;
+        
+        audio_manager = FindAnyObjectByType<audio_manager>();
     }
 
     protected virtual void Update()
@@ -65,6 +69,8 @@ public abstract class enemy: MonoBehaviour
         }
         
         StopAllCoroutines();
+        
+        audio_manager.play_die();
     }
 
     public virtual void take_damage(float damagez)
@@ -72,6 +78,8 @@ public abstract class enemy: MonoBehaviour
         ani.SetTrigger("is_hit");
         current_health -= damagez;
         update_health();
+        
+        audio_manager.play_hit();
 
         if (current_health == 0)
         {
@@ -95,8 +103,43 @@ public abstract class enemy: MonoBehaviour
     {
         if (player == null)
         {
-            print("player is null");
             StopAllCoroutines();
+        }
+    }
+    
+    protected void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            player.take_damage(damage);
+        }
+    }
+
+    protected void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Player") && !is_damage)
+        {
+            coroutine = StartCoroutine(stay_damagez());
+        }
+    }
+
+    protected virtual void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            StopCoroutine(coroutine);
+            is_damage = false;
+        }
+    }
+
+    protected IEnumerator stay_damagez()
+    {
+        is_damage = true;
+
+        while (true)
+        {
+            player.take_damage(stay_damage);
+            yield return new WaitForSeconds(1f);
         }
     }
 }

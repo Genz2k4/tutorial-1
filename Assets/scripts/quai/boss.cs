@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -15,54 +16,20 @@ public class boss : enemy
         StartCoroutine(skill());
     }
     
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            player.take_damage(damage);
-        }
-    }
-
-    void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.CompareTag("Player") && !is_damage)
-        {
-            StartCoroutine(stay_damagez());
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            StopCoroutine(stay_damagez());
-            is_damage = false;
-        }
-    }
-
-    IEnumerator stay_damagez()
-    {
-        is_damage = true;
-
-        while (true)
-        {
-            player.take_damage(stay_damage);
-            yield return new WaitForSeconds(1f);
-        }
-    }
-
     void dich_chuyen()
     {
         if (current_health > 0)
         {
+            print("tele");
             transform.position = player.transform.position;
         }
     }
-
+    
     void dan_toa()
     {
         if (current_health > 0)
         {
+            print("dan toa");
             var angleStep = 360f / bullet_count;
             var angle = 0f;
 
@@ -76,6 +43,10 @@ public class boss : enemy
                 bullet.GetComponent<bullet_quai>().Setdir(bulletDir);
 
                 angle += angleStep;
+                
+                Destroy(bullet, 2f);
+                
+                audio_manager.play_shoot();
             }
         }
     }
@@ -84,6 +55,7 @@ public class boss : enemy
     {
         if (current_health > 0 && current_health < max_health)
         {
+            print("heal");
             var hp = Random.Range(min, max);
             current_health += hp;
             if (current_health > max_health)

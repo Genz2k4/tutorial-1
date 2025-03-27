@@ -80,7 +80,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2092964637, guid: 4104ee12b4d54f54b91b3ba875787837, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -183,9 +183,9 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &8260987871991800185
 MonoBehaviour:
@@ -208,6 +208,7 @@ MonoBehaviour:
   coin_prefabs: {fileID: 8418708453003590804, guid: da4051cf496422949ba5fa53ee2972c3, type: 3}
   health_bar: {fileID: 6761926628353281495}
   coins: []
+  audio_manager: {fileID: 0}
 --- !u!1001 &4520681636362511222
 PrefabInstance:
   m_ObjectHideFlags: 0

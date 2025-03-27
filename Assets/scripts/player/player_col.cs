@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class player_col : MonoBehaviour
 {
-    player playerz;
-    
     [SerializeField] int count, max_count, min, max;
     [SerializeField] GameObject boss_prefab;
     [SerializeField] Transform boss_pos;
+    [SerializeField] game_manager game_manager;
+    [SerializeField] player player;
+    [SerializeField] audio_manager audio_manager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        playerz = GetComponent<player>();
+        
     }
 
     // Update is called once per frame
@@ -25,24 +26,31 @@ public class player_col : MonoBehaviour
         {
             Destroy(other.gameObject);
             
-            playerz.add_score();
+            game_manager.add_score();
+            
+            audio_manager.play_select();
         }
         
         if (other.CompareTag("items_boss"))
         {
             Destroy(other.gameObject);
             
-            playerz.add_score();
+            game_manager.add_energy();
             count++;
             if (count == max_count)
             {
                 call_boss();
+                game_manager.boss_coming();
             }
+            
+            audio_manager.play_energy();
         }
         
         if (other.CompareTag("boss_coin"))
         {
             Destroy(other.gameObject);
+            game_manager.WinGame();
+            audio_manager.play_select();
         }
         
         if (other.CompareTag("items_health"))
@@ -51,7 +59,9 @@ public class player_col : MonoBehaviour
             
             var heal = Random.Range(min, max);
             
-            playerz.heal(heal);
+            player.heal(heal);
+            
+            audio_manager.play_select();
         }
     }
 

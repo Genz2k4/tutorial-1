@@ -12,11 +12,10 @@ public class player : MonoBehaviour
     SpriteRenderer sp;
     
     [SerializeField] float speed, max_health, current_health;
-    [SerializeField] int score;
     [SerializeField] Image health_bar;
-    [SerializeField] TextMeshProUGUI score_text;
     [SerializeField] GameObject die_prefabs;
-    [SerializeField] gamemanager gamemanager;
+    [SerializeField] game_manager game_manager;
+    [SerializeField] audio_manager audio_manager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,8 +25,6 @@ public class player : MonoBehaviour
         
         current_health = max_health;
         update_health();
-
-        score_text.text = $"score: {score}";
     }
 
     // Update is called once per frame
@@ -66,10 +63,13 @@ public class player : MonoBehaviour
     {
         current_health -= damage;
         update_health();
+        
+        audio_manager.play_hit();
 
         if (current_health == 0)
         {
             die();
+            game_manager.GameOver();
         }
     }
 
@@ -80,20 +80,15 @@ public class player : MonoBehaviour
         var die_pre = Instantiate(die_prefabs, transform.position, Quaternion.identity);
         Destroy(die_pre, 0.5f);
         
-        gamemanager.game_over();
+        audio_manager.play_die();
     }
 
     void update_health()
     {
+        current_health = Mathf.Max(0, current_health);
         health_bar.fillAmount = current_health / max_health;
     }
-
-    public void add_score()
-    {
-        score ++;
-        score_text.text = $"score: {score}";
-    }
-
+    
     public void heal(float heal)
     {
         if (current_health < max_health)

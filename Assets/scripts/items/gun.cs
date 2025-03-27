@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,12 +10,16 @@ public class gun : MonoBehaviour
     [SerializeField] int max_ammor;
     [SerializeField] int current_ammor;
     [SerializeField] float fire_rate;
-    float next_fire;
+    [SerializeField] audio_manager audio_manager;
+    [SerializeField] TextMeshProUGUI ammor_text;
     
+    float next_fire;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         current_ammor = max_ammor;
+
+        ammor_text.text = $"{current_ammor}";
     }
 
     // Update is called once per frame
@@ -54,6 +59,8 @@ public class gun : MonoBehaviour
             next_fire = Time.time + fire_rate;
             Instantiate(bullet, fire_point.position, fire_point.rotation);
             current_ammor--;
+            ammor_text.text = $"{current_ammor}";
+            audio_manager.play_shoot();
         }
     }
 
@@ -62,6 +69,8 @@ public class gun : MonoBehaviour
         if (Input.GetMouseButtonDown(1) && current_ammor < max_ammor)
         {
             current_ammor = max_ammor;
+            ammor_text.text = $"{current_ammor}";
+            audio_manager.play_reload();
         }
     }
 }
