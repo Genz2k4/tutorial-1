@@ -9,11 +9,13 @@ public class boss : enemy
     [SerializeField] float time;
     [SerializeField] int bullet_count, min, max;
     [SerializeField] GameObject bullet_prefab;
+    public bool is_live;
 
     protected override void Start()
     {
         base.Start();
         StartCoroutine(skill());
+        is_live = true;
     }
     
     void dich_chuyen()
@@ -90,5 +92,11 @@ public class boss : enemy
                 }
             }
         }
+    }
+
+    protected override void die()
+    {
+        base.die();
+        is_live = false;
     }
 }

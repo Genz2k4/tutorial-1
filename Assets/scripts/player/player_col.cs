@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class player_col : MonoBehaviour
@@ -8,6 +9,7 @@ public class player_col : MonoBehaviour
     [SerializeField] game_manager game_manager;
     [SerializeField] player player;
     [SerializeField] audio_manager audio_manager;
+    boss boss;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -41,6 +43,7 @@ public class player_col : MonoBehaviour
             {
                 call_boss();
                 game_manager.boss_coming();
+                StartCoroutine(check_boss());
             }
             
             audio_manager.play_energy();
@@ -67,6 +70,16 @@ public class player_col : MonoBehaviour
 
     void call_boss()
     {
-        Instantiate(boss_prefab, boss_pos.position, boss_pos.rotation);
+        var call_bosss = Instantiate(boss_prefab, boss_pos.position, boss_pos.rotation);
+        boss = call_bosss.GetComponent<boss>();
+    }
+
+    IEnumerator check_boss()
+    {
+        if (boss.is_live == false)
+        {
+            yield return new WaitForSeconds(2f);
+            Destroy(gameObject);
+        }
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class game_ui : MonoBehaviour
 {
-    [SerializeField] game_manager game_manager;
+    public game_manager game_manager;
     
     public void start_game()
     {

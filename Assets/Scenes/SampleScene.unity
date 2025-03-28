@@ -2812,7 +2812,7 @@ GameObject:
   - component: {fileID: 1093800874}
   - component: {fileID: 1093800873}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4414,7 +4414,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 20
   m_TargetDisplay: 0
 --- !u!224 &1594343502
 RectTransform:
