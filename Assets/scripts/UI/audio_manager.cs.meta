@@ -1,2 +1,22 @@
 fileFormatVersion: 2
 guid: 9c93e934da5a9f147ab736e05c7e3fbb
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - audio_source: {instanceID: 0}
+  - default_audio_source: {instanceID: 0}
+  - shoot_clip: {instanceID: 0}
+  - reload_clip: {instanceID: 0}
+  - energy_clip: {instanceID: 0}
+  - die_clip: {instanceID: 0}
+  - win_clip: {instanceID: 0}
+  - select_clip: {instanceID: 0}
+  - hit_clip: {instanceID: 0}
+  - lose_clip: {instanceID: 0}
+  - score_clip: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

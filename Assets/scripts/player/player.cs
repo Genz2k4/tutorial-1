@@ -11,11 +11,11 @@ public class player : MonoBehaviour
     Animator ani;
     SpriteRenderer sp;
     
-    [SerializeField] float speed, max_health, current_health;
-    [SerializeField] Image health_bar;
-    [SerializeField] GameObject die_prefabs;
+    public float speed, max_health, current_health;
+    public Image health_bar;
+    public GameObject die_prefabs;
     [SerializeField] game_manager game_manager;
-    [SerializeField] audio_manager audio_manager;
+    public audio_manager audio_manager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -73,7 +73,7 @@ public class player : MonoBehaviour
         }
     }
 
-    void die()
+    public void die()
     {
         Destroy(gameObject);
         
@@ -83,7 +83,7 @@ public class player : MonoBehaviour
         audio_manager.play_die();
     }
 
-    void update_health()
+    public void update_health()
     {
         current_health = Mathf.Max(0, current_health);
         health_bar.fillAmount = current_health / max_health;
@@ -99,6 +99,7 @@ public class player : MonoBehaviour
             {
                 current_health = max_health;
             }
+            
             update_health();
         }
     }
