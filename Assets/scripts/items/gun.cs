@@ -58,15 +58,17 @@ public class gun : MonoBehaviour
         {
             next_fire = Time.time + fire_rate;
             Instantiate(bullet, fire_point.position, fire_point.rotation);
-            current_ammor--;
+            current_ammor -= 1;
+            print(current_ammor);
             ammor_text.text = $"{current_ammor}";
             audio_manager.play_shoot();
+            print("ok");
         }
     }
 
     void reload()
     {
-        if (Input.GetMouseButtonDown(1) && current_ammor < max_ammor)
+        if (/*Input.GetMouseButtonDown(1) && */current_ammor < max_ammor)
         {
             current_ammor = max_ammor;
             ammor_text.text = $"{current_ammor}";

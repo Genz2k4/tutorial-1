@@ -43,7 +43,6 @@ public class player_col : MonoBehaviour
             {
                 call_boss();
                 game_manager.boss_coming();
-                StartCoroutine(check_boss());
             }
             
             audio_manager.play_energy();
@@ -72,14 +71,5 @@ public class player_col : MonoBehaviour
     {
         var call_bosss = Instantiate(boss_prefab, boss_pos.position, boss_pos.rotation);
         boss = call_bosss.GetComponent<boss>();
-    }
-
-    IEnumerator check_boss()
-    {
-        if (boss.is_live == false)
-        {
-            yield return new WaitForSeconds(2f);
-            Destroy(gameObject);
-        }
     }
 }

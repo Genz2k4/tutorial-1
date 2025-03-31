@@ -5,14 +5,15 @@ using UnityEngine.TestTools;
 
 public class play_mode
 {
-    GameObject player;
+    GameObject _player;
     player pl;
 
     [SetUp]
     public void Setup()
     {
-        player = new GameObject();
-        pl = player.AddComponent<player>();
+        _player = new GameObject();
+        _player.AddComponent<player>();
+        pl = _player.GetComponent<player>();
         pl.die_prefabs = new GameObject();
     }
     // A Test behaves as an ordinary method
@@ -28,8 +29,9 @@ public class play_mode
     public IEnumerator test_die1()
     {
         pl.die();
-        Assert.IsTrue(pl == null || !pl.gameObject, "failed");
+        
         yield return null;
+        Assert.IsTrue(pl == null || !pl.gameObject, "failed");
     }
     
     [UnityTest]
